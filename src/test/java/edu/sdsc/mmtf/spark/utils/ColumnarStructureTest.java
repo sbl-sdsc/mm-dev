@@ -22,12 +22,6 @@ public class ColumnarStructureTest {
 
 	@Before
 	public void setUp() throws Exception {
-	 	String path = System.getProperty("MMTF_FULL");
-	    if (path == null) {
-	    	    System.err.println("Environment variable for Hadoop sequence file has not been set");
-	        System.exit(-1);
-	    }
-	    
       	SparkConf conf = new SparkConf().setMaster("local[*]").setAppName(ColumnarStructureTest.class.getSimpleName());
 	    sc = new JavaSparkContext(conf);
 
