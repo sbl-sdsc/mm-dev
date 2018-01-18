@@ -38,18 +38,18 @@ public class Driver1 {
 				.flatMapToPair(new StructureToPolymerChains(false, true));
 		
 		// Examples similar: 4N6T, 2CH9, 3UL5, 3KVP
-		// Examples dissimilar: 1STP
-		List<String> targetId = Arrays.asList("5O5I");
+		// Examples dissimilar: 1STP, 5O5I
+		List<String> targetId = Arrays.asList("4N6T", "2CH9", "3UL5", "3KVP", "1STP", "5O5I");
 		JavaPairRDD<String, StructureDataInterface> target = MmtfReader.downloadMmtfFiles(targetId, false, true, sc)
 				.flatMapToPair(new StructureToPolymerChains(false, true));
 		
-		// two main algorithm
+		// two standard algorithms
 //		String alignmentAlgorithm = CeMain.algorithmName;
 		String alignmentAlgorithm = FatCatRigid.algorithmName;
-//		String alignmentAlgorithm = ExhaustiveAligner.alignmentAlgorithm;
+//		String alignmentAlgorithm = "exhaustive";
 		
 		// calculate alignments	
-		Dataset<Row> alignments = StructureAligner.getOneVsAllAlignments(target, query, alignmentAlgorithm).cache();
+		Dataset<Row> alignments = StructureAligner.getQueryVsAllAlignments(target, query, alignmentAlgorithm).cache();
 		
 		// show results
 	    int count = (int)alignments.count();	

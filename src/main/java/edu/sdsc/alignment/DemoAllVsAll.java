@@ -37,18 +37,21 @@ public class DemoAllVsAll {
 		SparkConf conf = new SparkConf().setMaster("local[*]").setAppName(DemoAllVsAll.class.getSimpleName());
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
-		// use a 1 % sample of the PDB and then filter by the Pisces non-redundant set
-		// at 20% sequence identity and a resolution better than 1.6 A.
+		// Read PDB and create a Pisces non-redundant set at 20% sequence identity and a resolution better than 1.6 A.
+		// Then take a 1% random sample.	
 		double fraction = 0.01;
-		int seed = 123;
+		long seed = 123;
 		
-		JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.readSequenceFile(path, fraction, seed, sc)
+		JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.readSequenceFile(path, sc)
 				.flatMapToPair(new StructureToPolymerChains())
-				.filter(new Pisces(20, 1.6));
+				.filter(new Pisces(20, 1.6))
+				.sample(false, fraction, seed);
 		
+		// run the structural alignment
 		String algorithmName = FatCatRigid.algorithmName;
 		Dataset<Row> alignments = StructureAligner.getAllVsAllAlignments(pdb, algorithmName).cache();
 		
+		// show results
 	    int count = (int)alignments.count();		
 		alignments.show(count);
 		

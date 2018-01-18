@@ -41,24 +41,26 @@ public class DemoOneVsAll {
 		
 		// use a 1 % sample of the PDB and then filter by the Pisces non-redundant set
 		// at 20% sequence identity and a resolution better than 1.6 A.
-		double fraction = 0.01;
-		int seed = 123;
-		JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.readSequenceFile(path, fraction, seed, sc)
+		double fraction = 1.0;
+		long seed = 123;
+		JavaPairRDD<String, StructureDataInterface> target = MmtfReader.readSequenceFile(path, fraction, seed, sc)
 				.flatMapToPair(new StructureToPolymerChains())
-				.filter(new Pisces(20, 1.6));
+				.filter(new Pisces(20, 1.6))
+				.sample(false, 0.08, seed);
 		
 		// specialized algorithms
 //		String alignmentAlgorithm = CeMain.algorithmName;
 //		String alignmentAlgorithm = CeCPMain.algorithmName;		
 //		String alignmentAlgorithm = FatCatFlexible.algorithmName;
 		
-		// two main algorithm
+		// two standard algorithms
 //		String alignmentAlgorithm = CeMain.algorithmName;
 		String alignmentAlgorithm = FatCatRigid.algorithmName;
+		
 //		String alignmentAlgorithm = ExhaustiveAligner.alignmentAlgorithm;
 		
 		// calculate alignments	
-		Dataset<Row> alignments = StructureAligner.getOneVsAllAlignments(pdb, query, alignmentAlgorithm).cache();
+		Dataset<Row> alignments = StructureAligner.getQueryVsAllAlignments(query, target, alignmentAlgorithm).cache();
 		
 		// show results
 	    int count = (int)alignments.count();	
