@@ -33,23 +33,27 @@ public class Driver1 {
 		long start = System.nanoTime();
 
 		// download query structure
-		List<String> queryId = Arrays.asList("2O9U");
+//		List<String> queryId = Arrays.asList("2O9U");
+		List<String> queryId = Arrays.asList("1STP");
 		JavaPairRDD<String, StructureDataInterface> query = MmtfReader.downloadMmtfFiles(queryId, false, true, sc)
 				.flatMapToPair(new StructureToPolymerChains(false, true));
 		
 		// Examples similar: 4N6T, 2CH9, 3UL5, 3KVP
 		// Examples dissimilar: 5O5I, 1STP, 
-		List<String> targetId = Arrays.asList("4N6T", "2CH9", "3UL5", "3KVP", "1STP", "5O5I");
+//		List<String> targetId = Arrays.asList("4N6T", "2CH9", "3UL5", "3KVP", "1STP", "5O5I");
+		List<String> targetId = Arrays.asList("4OKA");
 		JavaPairRDD<String, StructureDataInterface> target = MmtfReader.downloadMmtfFiles(targetId, false, true, sc)
 				.flatMapToPair(new StructureToPolymerChains(false, true));
 		
 		// two standard algorithms
 //		String alignmentAlgorithm = CeMain.algorithmName;
-		String alignmentAlgorithm = FatCatRigid.algorithmName;
-//		String alignmentAlgorithm = "exhaustive";
+//		String alignmentAlgorithm = FatCatRigid.algorithmName;
+		String alignmentAlgorithm = "exhaustive";
 		
 		// calculate alignments	
-		Dataset<Row> alignments = StructureAligner.getQueryVsAllAlignments(target, query, alignmentAlgorithm).cache();
+		Dataset<Row> alignments = StructureAligner.getQueryVsAllAlignments(query, target, alignmentAlgorithm).cache();
+		
+		alignments.coalesce(1).write().mode("overwrite").format("csv").save(args[0]);
 		
 		// show results
 	    int count = (int)alignments.count();	

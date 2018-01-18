@@ -58,10 +58,10 @@ public class StructuralAlignmentMapper implements FlatMapFunction<Tuple2<Integer
 		    
 		} else if (ExhaustiveAligner.isSupportedAlgorithm(alignmentAlgorithm)) {
 			ExhaustiveAligner aligner = new ExhaustiveAligner();
-			aligner.setMinLength(50);
-			aligner.setMinCoverage(30);
-			aligner.setMaxRmsd(4.0);
-			aligner.setMinTm(0.4);
+			aligner.setMinLength(0);
+			aligner.setMinCoverage(0);
+			aligner.setMaxRmsd(1000.0);
+			aligner.setMinTm(0.1);
 			rows = aligner.getAlignments(alignmentAlgorithm, key, x, y); // returns zero or more alignments
 		}
 
