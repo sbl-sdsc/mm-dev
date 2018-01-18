@@ -38,7 +38,7 @@ public class Driver1 {
 				.flatMapToPair(new StructureToPolymerChains(false, true));
 		
 		// Examples similar: 4N6T, 2CH9, 3UL5, 3KVP
-		// Examples dissimilar: 1STP, 5O5I
+		// Examples dissimilar: 5O5I, 1STP, 
 		List<String> targetId = Arrays.asList("4N6T", "2CH9", "3UL5", "3KVP", "1STP", "5O5I");
 		JavaPairRDD<String, StructureDataInterface> target = MmtfReader.downloadMmtfFiles(targetId, false, true, sc)
 				.flatMapToPair(new StructureToPolymerChains(false, true));

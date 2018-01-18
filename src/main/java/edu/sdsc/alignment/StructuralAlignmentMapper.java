@@ -57,7 +57,12 @@ public class StructuralAlignmentMapper implements FlatMapFunction<Tuple2<Integer
 		    rows = BiojavaAligner.getAlignment(alignmentAlgorithm, key, x, y); // returns a single alignment
 		    
 		} else if (ExhaustiveAligner.isSupportedAlgorithm(alignmentAlgorithm)) {
-			rows = ExhaustiveAligner.getAlignments(alignmentAlgorithm, key, x, y); // returns zero or more alignments
+			ExhaustiveAligner aligner = new ExhaustiveAligner();
+			aligner.setMinLength(50);
+			aligner.setMinCoverage(30);
+			aligner.setMaxRmsd(4.0);
+			aligner.setMinTm(0.4);
+			rows = aligner.getAlignments(alignmentAlgorithm, key, x, y); // returns zero or more alignments
 		}
 
 		return rows.iterator();

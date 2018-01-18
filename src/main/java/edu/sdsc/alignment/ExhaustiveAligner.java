@@ -20,6 +20,42 @@ import org.apache.spark.sql.RowFactory;
  */
 public class ExhaustiveAligner implements Serializable {
 	private static final long serialVersionUID = -535570860330510219L;
+	private int minLength;
+	private int minCoverage;
+	private double maxRmsd;
+	private double minTm;
+
+	public int getMinLength() {
+		return minLength;
+	}
+
+	public void setMinLength(int minLength) {
+		this.minLength = minLength;
+	}
+
+	public int getMinCoverage() {
+		return minCoverage;
+	}
+
+	public void setMinCoverage(int minCoverage) {
+		this.minCoverage = minCoverage;
+	}
+
+	public double getMaxRmsd() {
+		return maxRmsd;
+	}
+
+	public void setMaxRmsd(double maxRmsd) {
+		this.maxRmsd = maxRmsd;
+	}
+
+	public double getMinTm() {
+		return minTm;
+	}
+
+	public void setMinTm(double minTm) {
+		this.minTm = minTm;
+	}
 
 	// supported algorithms
 	private static List<String> EXHAUSTIVE_ALGORITHMS = Arrays.asList(
@@ -43,7 +79,7 @@ public class ExhaustiveAligner implements Serializable {
 	 * @param points2 C-alpha positions of chain 2
 	 * @return list of alignment metrics
 	 */
-	public static List<Row> getAlignments(String alignmentAlgorithm, String key, Point3d[] points1, Point3d[] points2) {	
+	public List<Row> getAlignments(String alignmentAlgorithm, String key, Point3d[] points1, Point3d[] points2) {	
 		List<Row> rows = new ArrayList<>();
 		
 		// TODO implement exhaustive alignments here ...
@@ -59,7 +95,7 @@ public class ExhaustiveAligner implements Serializable {
 			int maxCoverage = Math.max(coverage1, coverage2);
 			
 			// store solutions that satisfy minimal criteria
-			if (length > 40 && maxCoverage > 50 && rmsd < 4.0 && tm > 0.4) {
+			if (length > minLength && maxCoverage > minCoverage && rmsd < maxRmsd && tm > minTm) {
 				// create a row of alignment metrics
 				Row row = RowFactory.create(key, length, coverage1, coverage2, rmsd, tm);
 				rows.add(row);
