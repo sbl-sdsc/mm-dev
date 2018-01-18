@@ -40,40 +40,6 @@ public class DrugBankDataset {
 	private static final String BASE_URL = "https://www.drugbank.ca/releases/latest/downloads/";
 	private static final int BUFFER = 2048;
 
-	public static void main(String[] args) throws IOException {
-		SparkSession spark = SparkSession.builder().master("local[*]").appName(DrugBankDataset.class.getSimpleName())
-				.getOrCreate();
-
-		long start = System.nanoTime();
-		
-		String username = args[0];
-		String password = args[1];
-
-//      
-//		Dataset<Row> ds = getDataset("https://www.drugbank.ca/releases/latest/downloads/target-all-polypeptide-ids", username, password);
-		Dataset<Row> ds = getDrugLinks(DrugGroup.APPROVED, username, password); // does not contain biotech drugs?
-        ds.show();
-		//		Dataset<Row> ds = getOpenDrugLinks();
-		//		ds = ds.filter("Name LIKE 'Cetuximab'");
-//		ds = ds.filter("StandardInChIKey IS NOT NULL");
-//		ds = ds.filter("DrugGroups LIKE '%approved%' OR DrugGroups LIKE '%investigational%'");
-//		ds = ds.filter("DrugGroups LIKE '%investigational%'");
-//		System.out.println(ds.count());
-//		ds = ds.filter("DrugGroup LIKE %APPROVED%");
-//		Dataset<Row> ds = getDrugTargetLinks(DrugGroup.INVESTIGATIONAL, username, password);
-//		Dataset<Row> ds = getDrugTargetLinks(DrugType.BIOTECH, username, password);
-//		ds = ds.filter("Name LIKE 'Cetuximab'");
-//		ds = ds.select("Name").distinct();
-		System.out.println(ds.count());
-		ds.show(1000);
-		
-		spark.close();
-		
-	    long end = System.nanoTime();
-		System.out.println("Spark time: " + TimeUnit.NANOSECONDS.toSeconds(end-start) + " sec.");	
- 
-	}
-	
 	/**
 	 * Downloads the DrugBank Open Data dataset with drug structure external links and identifiers.
 	 * See DrugBank <a href="https://www.drugbank.ca/releases/latest#open-data">Open Data dataset</a>.
