@@ -254,7 +254,7 @@ public class InteractionCenter implements Serializable {
      * @return array of objects representing this interaction center
      */
     public Object[] getAsObject() {
-        return new Object[] { atomName, element, (float) normalizedbFactor, groupName, groupNumber, type, chainName };
+        return new Object[] { atomName, element, groupName, groupNumber, type, chainName, (float) normalizedbFactor};
     }
 
     /**
@@ -269,10 +269,10 @@ public class InteractionCenter implements Serializable {
         boolean nullable = true;
         return new StructField[] { DataTypes.createStructField("atom" + index, DataTypes.StringType, nullable),
                 DataTypes.createStructField("element" + index, DataTypes.StringType, nullable),
-                DataTypes.createStructField("nbFactor" + index, DataTypes.FloatType, nullable),
                 DataTypes.createStructField("group" + index, DataTypes.StringType, nullable),
                 DataTypes.createStructField("groupNum" + index, DataTypes.StringType, nullable),
                 DataTypes.createStructField("type" + index, DataTypes.StringType, nullable),
-                DataTypes.createStructField("chain" + index, DataTypes.StringType, nullable) };
+                DataTypes.createStructField("chain" + index, DataTypes.StringType, nullable),
+                DataTypes.createStructField("nbFactor" + index, DataTypes.FloatType, nullable)};
     }
 }

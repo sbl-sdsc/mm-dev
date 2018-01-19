@@ -114,6 +114,7 @@ public class StructureToAtomInteractions
 
 		int[] atomToGroupIndices = arrays.getAtomToGroupIndices();
 		float[] occupancies = arrays.getOccupancies();
+		float[] normalizedbFactors = arrays.getNormalizedbFactors();
 		String[] groupNames = arrays.getGroupNames();
 
 		// record query atom info
@@ -142,7 +143,8 @@ public class StructureToAtomInteractions
 				// exclude interactions with undesired groups and
 				// atoms with partial occupancy (< 1.0)
 				if (filter.isProhibitedTargetGroup(groupNames[neighborIndex])
-						|| occupancies[neighborIndex] < 1.0f) {
+						|| normalizedbFactors[neighborIndex] > filter.getNormalizedbFactorCutoff()
+	                    || occupancies[neighborIndex] < 1.0f ) {
 					// return an empty atom interaction
 					return new AtomInteraction();
 				}
@@ -167,12 +169,13 @@ public class StructureToAtomInteractions
 	 * @param ColumnarStructure
 	 * @return
 	 */
-	private List<Integer> getQueryAtomIndices(ColumnarStructure arrays) {
+	private List<Integer> getQueryAtomIndices(ColumnarStructureX arrays) {
 		// get required data
 		String[] groupNames = arrays.getGroupNames();
 		String[] elements = arrays.getElements();
 		int[] groupStartIndices = arrays.getGroupToAtomIndices();
 		float[] occupancies = arrays.getOccupancies();
+		float[] normalizedbFactors = arrays.getNormalizedbFactors();
 		
 		// find atoms that match the query criteria and 
 		// exclude atoms with partial occupancy
@@ -184,6 +187,7 @@ public class StructureToAtomInteractions
 			if (filter.isQueryGroup(groupNames[start])) {
 				for (int j = start; j < end; j++) {
 					if (filter.isQueryElement(elements[j])
+					        && normalizedbFactors[j] < filter.getNormalizedbFactorCutoff()
 							&& !(occupancies[j] < 1.0f)) {
 						indices.add(j);
 					}

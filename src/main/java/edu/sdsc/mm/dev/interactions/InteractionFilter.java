@@ -20,7 +20,7 @@ public class InteractionFilter implements Serializable {
     
     // interaction criteria
     private double distanceCutoff = Double.MAX_VALUE;
-    private double normalizedbFactorCutoff = Double.MIN_VALUE;
+    private double normalizedbFactorCutoff = Double.MAX_VALUE;
     private int minInteractions = 1;
     private int maxInteractions = 10;
 

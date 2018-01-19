@@ -142,9 +142,6 @@ public class AtomInteraction {
 	 * @return number of neighbor atoms that interact with the central atom
 	 */
 	public int getNumInteractions() {
-		if (center == null) {
-		    throw new IllegalArgumentException("ERROR: Query center has not been set.");
-		}
 		return neighbors.size();
 	}
 
