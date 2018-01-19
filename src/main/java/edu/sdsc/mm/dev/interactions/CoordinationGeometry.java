@@ -163,7 +163,6 @@ public class CoordinationGeometry implements Serializable {
         sum2 += Math.pow(dotProducts[1][4], 2);
         sum2 += Math.pow(dotProducts[2][3], 2);
         sum2 += Math.pow(dotProducts[2][4], 2);
-
         sum2 += Math.pow(dotProducts[3][4], 2);
 
         // 1 axial-axial angle (180 deg: cos(180) = -1)
