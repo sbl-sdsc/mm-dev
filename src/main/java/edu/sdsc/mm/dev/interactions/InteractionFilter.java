@@ -77,8 +77,9 @@ public class InteractionFilter implements Serializable {
     }
 
     /**
-     * Sets the maximum normalized b-factor cutoff (z-score). This value
-     * is the signed number of standard deviations by which the a b-factor
+     * Sets the maximum normalized b-factor cutoff. This value represents a
+     * <a href="https://en.wikipedia.org/wiki/Standard_score">z-score</a>,
+     * the signed number of standard deviations by which the b-factor
      * of an atom is above the mean b-factor. High z-scores indicate 
      * either high flexibility and/or experimental error for the atoms
      * involved in the interactions. By setting a cutoff value, not well
@@ -96,7 +97,7 @@ public class InteractionFilter implements Serializable {
      * For example, to include all interactions within the 90% confidence
      * interval, set the normalized b-factor to +1.645.
      * 
-     * @param normalizedbFactorCutoff maximum normalize b-factor
+     * @param normalizedbFactorCutoff maximum normalized b-factor
      */
     public void setNormalizedbFactorCutoff(double normalizedbFactorCutoff) {
         this.normalizedbFactorCutoff = normalizedbFactorCutoff;
