@@ -13,8 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rcsb.mmtf.api.StructureDataInterface;
 
+import edu.sdsc.mm.dev.utils.ColumnarStructure;
 import edu.sdsc.mmtf.spark.io.MmtfReader;
-import edu.sdsc.mmtf.spark.utils.ColumnarStructure;
 
 public class ColumnarStructureTest {
 	private JavaSparkContext sc;

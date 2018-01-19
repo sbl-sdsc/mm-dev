@@ -1,4 +1,4 @@
-package edu.sdsc.mmtf.spark.utils;
+package edu.sdsc.mm.dev.utils;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -38,7 +38,6 @@ public class ColumnarStructure implements Serializable {
 	private int[] entityIndices;
 
 	/**
-	 * Creates an
 	 * 
 	 * @param structure
 	 * @param firstModelOnly if true, use only first model in a structure

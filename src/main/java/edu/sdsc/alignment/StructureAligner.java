@@ -21,7 +21,7 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.rcsb.mmtf.api.StructureDataInterface;
 
-import edu.sdsc.mmtf.spark.utils.ColumnarStructureX;
+import edu.sdsc.mm.dev.utils.ColumnarStructureX;
 import scala.Tuple2;
 
 /**

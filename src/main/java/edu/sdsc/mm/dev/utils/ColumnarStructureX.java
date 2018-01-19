@@ -1,4 +1,4 @@
-package edu.sdsc.mmtf.spark.utils;
+package edu.sdsc.mm.dev.utils;
 
 import java.util.ArrayList;
 import java.util.List;
