@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * A filter used to specify criteria for molecular interactions between a query 
+ * A filter to specify criteria for molecular interactions between a query 
  * and a target within a macromolecular structure. The filter specifies criteria 
  * for the query (e.g., a metal ion) and the target (e.g., amino acid residues).
  * Interaction criteria, such as distance cutoff limit the nature of interactions to
@@ -41,7 +41,7 @@ public class InteractionFilter implements Serializable {
      * Gets the maximum interaction distance. At least one pair of query and
      * target atoms must be within this distance cutoff.
      * 
-     * @return longest allowable interaction distance
+     * @return maximum interaction distance
      */
     public double getDistanceCutoff() {
         return distanceCutoff;
@@ -51,7 +51,7 @@ public class InteractionFilter implements Serializable {
      * Set the distance cutoff for interacting atoms.
      * 
      * @param distanceCutoff
-     *            the maximum allowable interaction distance
+     *            the maximum interaction distance
      */
     public void setDistanceCutoff(double distanceCutoff) {
         this.distanceCutoff = distanceCutoff;
@@ -77,8 +77,10 @@ public class InteractionFilter implements Serializable {
     }
 
     /**
-     * Sets the maximum normalized b-factor cutoff (z-score). High z-scores
-     * indicate either high flexibility and/or experimental error for the atoms
+     * Sets the maximum normalized b-factor cutoff (z-score). This value
+     * is the signed number of standard deviations by which the a b-factor
+     * of an atom is above the mean b-factor. High z-scores indicate 
+     * either high flexibility and/or experimental error for the atoms
      * involved in the interactions. By setting a cutoff value, not well
      * defined interactions can be excluded.
      * 
