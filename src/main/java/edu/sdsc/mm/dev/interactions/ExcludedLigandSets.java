@@ -8,7 +8,7 @@ import java.util.Set;
  * Returns sets of "uninteresting" (e.g., not drug like) ligands. Data are from the
  * <a href="https://github.com/drugdata/D3R/blob/master/d3r/filter/filtering_sets.py"">D3R Project</a>.
  * 
- * @author Peter W Rose
+ * @author Peter Rose
  *
  */
 public final class ExcludedLigandSets {
