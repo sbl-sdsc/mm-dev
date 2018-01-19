@@ -92,7 +92,7 @@ public class InteractionFilter implements Serializable {
      *              90%       0.05    +-1.645 
      *              95%       0.025   +-1.96 
      *              99%       0.005   +-2.576
-     * <pre>
+     * </pre>
      *
      * For example, to include all interactions within the 90% confidence
      * interval, set the normalized b-factor to +1.645.
