@@ -1,4 +1,4 @@
-package edu.sdsc.mm.dev.interactions;
+package edu.sdsc.mm.dev.utils;
 
 import java.io.Serializable;
 
@@ -6,8 +6,6 @@ import javax.vecmath.Point3d;
 
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
-
-import edu.sdsc.mm.dev.utils.ColumnarStructureX;
 
 /**
  * InteractionCenter stores information about an atom involved in a molecular

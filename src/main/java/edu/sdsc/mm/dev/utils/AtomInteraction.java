@@ -1,4 +1,4 @@
-package edu.sdsc.mm.dev.interactions;
+package edu.sdsc.mm.dev.utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,14 +18,18 @@ import org.apache.spark.sql.types.StructType;
  * with its interacting neighbors (coordination sphere). Once this 
  * data structure is filled with interaction centers, this class 
  * calculates various geometric properties such as distance, angles, 
- * and order parameters for the interacting atoms. Finally, it provides methods for 
- * creating a row-wise representations of the data to create Spark Datasets.
+ * and order parameters for the interacting atoms (see {@link CoordinationGeometry}). 
+ * Finally, it provides methods for creating row-wise representations of 
+ * the data in Spark Datasets.
  * 
  * <p> Two row-wise representations of results are supported:
- * <p> * Rows of interacting atom pairs and distances
- * <p> * Row of central atom and all neighbor atoms, distances, angles, and order parameters
+ * <ul>
+ * <li> Rows of interacting atom pairs and distances
+ * <li> Row of central atom and all neighbor atoms, distances, angles, and order parameters
+ * </ul>
  * 
  * @author Peter Rose
+ * @see edu.sdsc.mm.dev.utils.CoordinationGeometry
  *
  */
 public class AtomInteraction {

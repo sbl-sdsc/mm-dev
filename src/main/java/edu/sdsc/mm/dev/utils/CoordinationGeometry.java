@@ -1,4 +1,4 @@
-package edu.sdsc.mm.dev.interactions;
+package edu.sdsc.mm.dev.utils;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -7,8 +7,8 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
 /**
- * This class calculates orientational order parameters for atoms coordinated to
- * a central atom.
+ * This class calculates distances, angles, and orientational order parameters 
+ * for atoms coordinated to a central atom.
  * 
  * @author Peter Rose
  *
@@ -49,7 +49,7 @@ public class CoordinationGeometry implements Serializable {
     }
 
     /**
-     * Returns all pairwise angles between two neighbor atoms and its center.
+     * Returns all pairwise angles between a center and pairs of neighbor atoms.
      * 
      * @return array of pairwise angles
      */
