@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Returns sets of "uninteresting" (e.g., not drug like) ligands. Data are from the
- * <a href="https://github.com/drugdata/D3R/blob/master/d3r/filter/filtering_sets.py"">D3R Project</a>.
+ * Returns unmodifiable sets of "uninteresting" (e.g., not drug like) ligands. Data are from the
+ * <a href="https://github.com/drugdata/D3R/blob/master/d3r/filter/filtering_sets.py">D3R Project</a>.
  * 
  * @author Peter Rose
  *
@@ -24,56 +24,58 @@ public final class ExcludedLigandSets {
 	public static final Set<String> DO_NOT_CALL;
 	public static final Set<String> ALL_GROUPS;
 
+	// TODO add saccharide set
+	
 	// fill data sets
 	static {
-		Set<String> mutableSet = new HashSet<>();
-		Collections.addAll(mutableSet, "CP", "NFU", "NFR", "NFE", "NFV", "FSO", "WCC", "TCN", "FS2", "PDV", "CPT",
+		Set<String> metalContaining = new HashSet<>();
+		Collections.addAll(metalContaining, "CP", "NFU", "NFR", "NFE", "NFV", "FSO", "WCC", "TCN", "FS2", "PDV", "CPT",
 				"OEC", "XCC", "NFS", "C7P", "TBR", "NFC", "CUB", "VA3", "FV1", "IME", "FC6", "RU7", "TBY", "REI", "REJ",
 				"CNB", "MM1", "MM2", "MM6", "MM5", "YBT", "CN1", "CLF", "CLP", "NC1", "V4O", "HC0", "VO3", "CFM", "CZL",
 				"CON", "TBR", "ICS", "HCN", "CFN", "CFC", "HF3", "ZRC", "F3S", "SRM", "HDD", "CUA", "RU8", "B22", "BEF",
 				"AG1", "SF4", "NCO", "0KA", "FNE", "QPT");
-		METAL_CONTAINING = Collections.unmodifiableSet(mutableSet);
+		METAL_CONTAINING = Collections.unmodifiableSet(metalContaining);
 		
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "B3P", "PGE", "6JZ", "15P", "PE3", "XPE", "7PE", "M2M", "13P", "3PP", "PX4",
+		Set<String> stabilizers = new HashSet<>();
+		Collections.addAll(stabilizers, "B3P", "PGE", "6JZ", "15P", "PE3", "XPE", "7PE", "M2M", "13P", "3PP", "PX4",
 				"3OL", "OC9", "AE3", "6JZ", "XPE", "211", "ODI", "DIA", "PG5", "CXE", "ME2", "P4G", "TOE", "PG5", "PE8",
 				"ZPG", "PE3", "MXE");
-		STABILIZERS = Collections.unmodifiableSet(mutableSet);
+		STABILIZERS = Collections.unmodifiableSet(stabilizers);
 		
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "MPO", "NHE", "CXS", "T3A", "3CX", "3FX", "PIN", "MES", "EPE", "TRS", "BTB", "144");
-        BUFFERS  = Collections.unmodifiableSet(mutableSet);
+		Set<String> buffers = new HashSet<>();
+		Collections.addAll(buffers, "MPO", "NHE", "CXS", "T3A", "3CX", "3FX", "PIN", "MES", "EPE", "TRS", "BTB", "144");
+        BUFFERS  = Collections.unmodifiableSet(buffers);
         
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "ATP", "ADP", "AMP", "ANP", "GTP", "GDP", "GNP", "UMP", "TTP", "TMP", "MGD",
+		Set<String> cofactors = new HashSet<>();
+		Collections.addAll(cofactors, "ATP", "ADP", "AMP", "ANP", "GTP", "GDP", "GNP", "UMP", "TTP", "TMP", "MGD",
 				"H2U", "ADN", "APC", "M2G", "OMG", "OMC", "UDP", "UMP", "5GP", "5MU", "5MC", "2MG", "1MA", "NAD", "NAP",
 				"NDP", "FAD", "FMN", "BH4", "BPH", "BTN", "PST", "SAM", "SAH", "COA", "ACO", "U10", "HEM", "HEC", "HEA",
 				"HAS", "DHE", "BCL", "CLA", "6HE", "7HE", "DCP", "23T", "H4B", "WCC", "CFN", "AMP", "BCL", "BCB", "CHL",
 				"NAP", "CON", "FAD", "NAD", "SXN", "U", "G", "QUY", "UDG", "CBY", "ST9", "25A", " A", " C", "B12",
 				"HAS", "BPH", "BPB", "IPE", "PLP", "H4B", "PMP", "PLP", "TPP", "TDP", "COO", "PQN", "BCR", "XAT");
-        COFACTORS  = Collections.unmodifiableSet(mutableSet);
+        COFACTORS  = Collections.unmodifiableSet(cofactors);
         
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "CS1", "MSE", "CME", "CSO", "LLP", "IAS");
-		COVALENT_MODS  = Collections.unmodifiableSet(mutableSet);
+		Set<String> covalentMods = new HashSet<>();
+		Collections.addAll(covalentMods, "CS1", "MSE", "CME", "CSO", "LLP", "IAS");
+		COVALENT_MODS  = Collections.unmodifiableSet(covalentMods);
 		
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "ACE", "ACT", "DMS", "EOH", "FMT", "IMD", "DTT", "BME", "IPA", "HED", "PEP",
+		Set<String> fragments = new HashSet<>();
+		Collections.addAll(fragments, "ACE", "ACT", "DMS", "EOH", "FMT", "IMD", "DTT", "BME", "IPA", "HED", "PEP",
 				"PYR", "PXY", "OXE", "TMT", "TMZ", "PLQ", "TAM", "HEZ", "DTV", "DTU", "DTD", "MRD", "MRY", "BU1", "D10",
 				"OCT", "ETE", "TZZ", "DEP", "BTB", "ACY", "MAE", "144", "CP", "UVW", "BET", "UAP", "SER", "SIN", "FUM",
 				"MAK", "PAE", "DTL", "HLT", "ASC", "D1D", "PCT", "TTN", "HDA", "PGA", "XXD", "INS", "217", "BHL", "16D",
 				"HSE", "OPE", "HCS", "SOR", "SKM", "KIV", "FCN", "TRA", "TRC", "MZP", "KDG", "DHK");
-        FRAGMENTS  = Collections.unmodifiableSet(mutableSet);
+        FRAGMENTS  = Collections.unmodifiableSet(fragments);
         
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "CO2", "SE", "GOL", "PEG", "EDO", "PG4", "C8E", "CE9", "BME", "1PE", "OLC",
+		Set<String> excipients = new HashSet<>();
+		Collections.addAll(excipients, "CO2", "SE", "GOL", "PEG", "EDO", "PG4", "C8E", "CE9", "BME", "1PE", "OLC",
 				"MYR", "LDA", "2CV", "1PG", "12P", "XP4", "PL3", "PE4", "PEU", "MPG", "B8M", "BOM", "2PE", "PG0", "PE5",
 				"PG6", "P33", "DTV", "SDS", "DTU", "DTD", "MRD", "MRY", "BU1", "LHG", "D10", "OCT", "LT1", "ETE", "BTB",
 				"PC1", "ACT", "ACY", "3GD", "CDL", "PLC", "D1D");
-        EXCIPIENTS  = Collections.unmodifiableSet(mutableSet);
+        EXCIPIENTS  = Collections.unmodifiableSet(excipients);
         
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "AS8", "PS9", "CYI", "NOB", "DPO", "MDN", "APC", "ACP", "LPT", "PBL", "LFA", "PGW",
+		Set<String> junk = new HashSet<>();
+		Collections.addAll(junk, "AS8", "PS9", "CYI", "NOB", "DPO", "MDN", "APC", "ACP", "LPT", "PBL", "LFA", "PGW",
 				"DD9", "PGV", "UPL", "PEF", "MC3", "LAP", "PEE", "D12", "CXE", "T1A", "TBA", "NET", "NEH", "P2N", "PON",
 				"PIS", "PPV", "DPO", "PSL", "TLA", "SRT", "104", "PTW", "ACN", "CHH", "CCD", "DAO", "SBY", "MYS", "XPT",
 				"NM2", "REE", "SO4-SO4", "P4C", "C10", "PAW", "OCM", "9OD", "Q9C", "UMQ", "STP", "PPK", "3PO", "BDD",
@@ -81,10 +83,10 @@ public final class ExcludedLigandSets {
 				"1EX", "B9M", "LPP", "IHD", "NKR", "T8X", "AE4", "X13", "16Y", "B3P", "RB3", "OHA", "DGG", "HXA", "D9G",
 				"HTG", "B7G", "FK9", "16P", "SPM", "TLA", "B3P", "15P", "SPO", "BCR", "BCN", "EPH", "SPD", "SPN", "SPH",
 				"S9L", "PTY", "PE8", "D12", "PEK");
-		JUNK  = Collections.unmodifiableSet(mutableSet);
+		JUNK  = Collections.unmodifiableSet(junk);
 		
-		mutableSet.clear();
-		Collections.addAll(mutableSet, "CP", "NFU", "NFR", "NFE", "NFV", "FSO", "WCC", "TCN", "FS2", "PDV", "CPT",
+		Set<String> doNotCall = new HashSet<>();
+		Collections.addAll(doNotCall, "CP", "NFU", "NFR", "NFE", "NFV", "FSO", "WCC", "TCN", "FS2", "PDV", "CPT",
 				"OEC", "XCC", "NFS", "C7P", "TBR", "NFC", "CUB", "VA3", "FV1", "IME", "FC6", "RU7", "TBY", "REI", "REJ",
 				"CNB", "MM1", "MM2", "MM6", "MM5", "YBT", "CN1", "CLF", "CLP", "V4O", "HC0", "VO3", "CFM", "CZL", "CON",
 				"ICS", "HCN", "CFN", "CFC", "HF3", "ZRC", "F3S", "SRM", "HDD", "B3P", "PGE", "6JZ", "15P", "PE3", "XPE",
@@ -109,18 +111,18 @@ public final class ExcludedLigandSets {
 				"DMU", "PEK", "PGV", "PSC", "TGL", "COO", "BCR", "XAT", "MOE", "P4C", "PP9", "Z0P", "YZY", "LMU", "MLA",
 				"GAI", "XE", "ARS", "SPM", "RU8", "B22", "BEF", "DHL", "HG", "MBO", "ARC", "OH", "FES", "RU", "IAS",
 				"QPT", "SR");
-		DO_NOT_CALL  = Collections.unmodifiableSet(mutableSet);
+		DO_NOT_CALL  = Collections.unmodifiableSet(doNotCall);
 
-		mutableSet.clear();
-		mutableSet.addAll(METAL_CONTAINING);
-		mutableSet.addAll(STABILIZERS);
-		mutableSet.addAll(BUFFERS);
-		mutableSet.addAll(COFACTORS);
-		mutableSet.addAll(COVALENT_MODS);
-		mutableSet.addAll(FRAGMENTS);
-		mutableSet.addAll(EXCIPIENTS);
-		mutableSet.addAll(JUNK);
-		mutableSet.addAll(DO_NOT_CALL);
-		ALL_GROUPS  = Collections.unmodifiableSet(mutableSet);
+		Set<String> allGroups = new HashSet<>();
+		allGroups.addAll(METAL_CONTAINING);
+		allGroups.addAll(STABILIZERS);
+		allGroups.addAll(BUFFERS);
+		allGroups.addAll(COFACTORS);
+		allGroups.addAll(COVALENT_MODS);
+		allGroups.addAll(FRAGMENTS);
+		allGroups.addAll(EXCIPIENTS);
+		allGroups.addAll(JUNK);
+		allGroups.addAll(DO_NOT_CALL);
+		ALL_GROUPS  = Collections.unmodifiableSet(allGroups);
 	}
 }

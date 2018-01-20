@@ -1,7 +1,6 @@
 package edu.sdsc.mm.dev.interactions.demo;
 
 import static org.apache.spark.sql.functions.col;
-import static org.apache.spark.sql.functions.concat;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -10,10 +9,10 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.spark.SparkConf;
@@ -47,6 +46,7 @@ public class WaterInteractions {
         // process command line options (defaults are provided)
         CommandLine cmd = getCommandLine(args);
         String outputPath = cmd.getOptionValue("output-path");
+        System.out.println(outputPath);
         String resolution = cmd.getOptionValue("resolution", "2");
         String minInteractions = cmd.getOptionValue("min-interactions", "2");
         String maxInteractions = cmd.getOptionValue("max-interactions", "4");
@@ -83,7 +83,7 @@ public class WaterInteractions {
         filter.setTargetElements(true, "O", "N", "S");
 
         
-        // exclude "un-interesting" ligands
+        // exclude "uninteresting" ligands
         Set<String> prohibitedGroups = new HashSet<>();
         prohibitedGroups.addAll(ExcludedLigandSets.ALL_GROUPS);
         if (!includeWaters) {
@@ -142,7 +142,7 @@ public class WaterInteractions {
         Options options = new Options();
 
         options.addOption("h", "help", false, "help");
-        options.addOption("o", true, "path to output file");
+        options.addOption("o", "output-path", true, "path to output file");
         options.addOption("r", "resolution", true, "minimum resolution of structure");
         options.addOption("d", "distance-cutoff", true, "maximum distance for interactions");
         options.addOption("b", "b-factor-cutoff", true, "maximum normalized b-factor");
