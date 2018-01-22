@@ -37,7 +37,7 @@ This demo shows how to analyze bridging water interactions between a ligand and 
 mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.datasets.demos.WaterInteractions" -Dexec.args="-r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o pathToOuputDirectory" -DMMTF_FULL="pathToMmtfDirectory/full"
 ```
 
-Explanation of command line arguments:
+The option -Dexec.args specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-r 2.0`: minimum resolution of structure
 
@@ -51,15 +51,11 @@ Explanation of command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w`: include other water in interactions (not used in the example above)
 
-**Note:** You may need to increase the memory allocation pool for a Java Virtual Machine. Use *-Xmx* option to increase the Java heap size to 4G when running the analysis.
-```
-export MAVEN_OPTS="-Xmx4G"
-```
+The option -DMMTF-FULL specifies the location of the Hadoop Sequence directory *full* containing the entire PDB archive.
 
-## How to get 3D structures in MMTF format
-This project needs access to a local copy of the PDB archive as a Hadoop sequence file. An up to date file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar) from [mmtf.rcsb.org](http://mmtf.rcsb.org/download.html).
+An up to file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar) from [mmtf.rcsb.org](http://mmtf.rcsb.org/download.html).
 
-Alternatively, you can use one of the following command tools to download and extract the data.
+Alternatively, the following command tools can be used download and extract the data.
 ```
 $ wget http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
 $ tar -xvf full.tar
@@ -70,4 +66,10 @@ or
 $ curl -O http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
 $ tar -xvf full.tar
 ```
-This will get and unpack the content of the Hadoop Sequence File to a directory name *full*. Set the MMTF_FULL property to the path of this folders (see example above)
+This will get and unpack the content of the Hadoop Sequence File to a directory named *full*. Set the MMTF_FULL property to the path of this folders (see example above)
+
+
+**Note:** You may need to increase the memory allocation pool for a Java Virtual Machine. Use *-Xmx* option to increase the Java heap size to 4G when running the analysis.
+```
+export MAVEN_OPTS="-Xmx4G"
+```
