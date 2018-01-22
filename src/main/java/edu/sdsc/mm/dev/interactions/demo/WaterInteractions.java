@@ -96,7 +96,7 @@ public class WaterInteractions {
         Dataset<Row> data = GroupInteractionExtractor.getInteractions(pdb, filter);
 
         // keep only interactions with at least one organic ligand and one protein interaction
-        data = filterBridgingWaterInteractions(data, maxInteractions);
+        data = filterBridgingWaterInteractions(data, maxInteractions).cache();
  
         
         // show some results
