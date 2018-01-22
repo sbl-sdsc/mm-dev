@@ -51,22 +51,23 @@ The option -Dexec.args specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w`: include other water in interactions (not used in the example above)
 
-The option -DMMTF-FULL specifies the location of the Hadoop Sequence directory *full* containing the entire PDB archive.
+The option -DMMTF-FULL specifies the location of the PDB archive in the form of a Hadoop Sequence directory named *full*. See [mmtf.rcsb.org](http://mmtf.rcsb.org/download.html) for more details.
 
-An up to file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar) from [mmtf.rcsb.org](http://mmtf.rcsb.org/download.html).
+An up to file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). Once this full.tar file has been downloaded, extract the full directory by double clicking the full.tar file (macOS) or by using a tool such as [7-Zip](http://www.7-zip.org/) (Windows).
 
-Alternatively, the following command tools can be used download and extract the data.
-```
-$ wget http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
-$ tar -xvf full.tar
-```
-or
+Alternatively, the following command tools can be used download and extract the data (LINUX, macOS):
 
 ```
 $ curl -O http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
 $ tar -xvf full.tar
 ```
-This will get and unpack the content of the Hadoop Sequence File to a directory named *full*. Set the MMTF_FULL property to the path of this folders (see example above)
+or
+```
+$ wget http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
+$ tar -xvf full.tar
+```
+
+This will get and unpack the content of the Hadoop Sequence File to a directory named *full*. 
 
 
 **Note:** You may need to increase the memory allocation pool for a Java Virtual Machine. Use *-Xmx* option to increase the Java heap size to 4G when running the analysis.
