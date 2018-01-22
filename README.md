@@ -2,14 +2,19 @@
 This repository is a working area for incubating new methods for the mmtf-spark project.
 
 ## Install Maven
-The install of this repository requires the Maven tool. If you do not have this tool installed, follow the directions below.
+The install of this repository requires the [Maven](http://maven.apache.org/guides/getting-started/index.html#What_is_Maven) tool. If you do not have this tool installed, follow the directions below.
 
 [Download Maven](http://maven.apache.org/download.cgi)
 
-[Install maven](http://maven.apache.org/install.html)
+[Install Maven](http://maven.apache.org/install.html)
 
-## Install mmtf-spark and mm-dev Git repositories
-Clone the mmtf-spark and mm-dev repositories and build the project using [Maven](http://maven.apache.org/guides/getting-started/index.html#What_is_Maven).
+To check if Maven is install, run the following command:
+```
+$ mvn -v
+```
+
+## Install mmtf-spark and mm-dev Git Repositories
+Clone the mmtf-spark and mm-dev repositories and build the project using Maven.
 
 ```
 $ git clone https://github.com/sbl-sdsc/mmtf-spark.git
@@ -24,20 +29,20 @@ $ mvn install
 The *install* goal will compile, test, and package the project’s code and then copy it into the local dependency repository, which Maven maintains on your local machine.
 
 ## Download the PDB archive as a Hadoop Sequence File
-The mmtf-spark and mm-dev projects read the PDB archive in the MMTF file format from a Hadoop Sequence file. This file format enables high-performance, parallel processing of the entire PDB in an interactive session.
-See [mmtf.rcsb.org](http://mmtf.rcsb.org/download.html) for more details.
+The mmtf-spark and mm-dev projects read the PDB archive in the [MMTF file format](https://doi.org/10.1371/journal.pcbi.1005575) from a [Hadoop Sequence File](https://wiki.apache.org/hadoop/SequenceFile). This file format enables high-performance, parallel processing of the entire PDB using [Apache Spark](https://spark.apache.org).
+See [mmtf.rcsb.org](https://mmtf.rcsb.org/download.html) for more details.
 
 An up to date file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). To extract the *full* directory from the *full.tar* archive, double click the file on *macOS* or use a tool such as [7-Zip](http://www.7-zip.org/) on *Windows*.
 
 Alternatively, the following command line tools can be used download and extract the data (LINUX, macOS):
 
 ```
-$ curl -O http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
+$ curl -O https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
 $ tar -xvf full.tar
 ```
 or
 ```
-$ wget http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
+$ wget https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
 $ tar -xvf full.tar
 ```
 
@@ -81,7 +86,7 @@ The option `-Dexec.args` specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-o`: path to output directory
 
-The option `-DMMTF-FULL` specifies the location of the PDB archive as a Hadoop Sequence file directory named *full*.
+The option `-DMMTF-FULL` specifies the location of the PDB archive as a Hadoop Sequence File directory named *full*.
 
 
 
