@@ -1,7 +1,14 @@
 ## mm-dev
 This repository is a working area for incubating new methods for the mmtf-spark project.
 
-## Install from Git repository
+## Install Maven
+The install of this repository requires the Maven tool.
+
+[Download Maven](http://maven.apache.org/download.cgi)
+
+[Install maven](http://maven.apache.org/install.html)
+
+## Install mmtf-spark and mm-dev Git repositories
 You can get the latest source code using git. Then you can execute the *install* goal with [Maven](http://maven.apache.org/guides/getting-started/index.html#What_is_Maven) to build the project.
 
 ```
@@ -16,12 +23,9 @@ $ mvn install
 ```
 The *install* goal will compile, test, and package the project’s code and then copy it into the local dependency repository which Maven maintains on your local machine.
 
-If you use Maven for the first time, these links can be useful:</br>
-[Where to download Maven](http://maven.apache.org/download.cgi)</br>
-[How to install Maven](http://maven.apache.org/install.html)
 
 ## How to run a demo using Maven
-Maven **exec** plugin lets you run the main method of a Java class in the project, with the project dependencies automatically included in the classpath.
+The Maven **exec** plugin lets you run the main method of a Java class in the project, with the project dependencies automatically included in the classpath.
 
 ### Run DrugBankDemo
 This demo shows how to create a dataset with drug information from DrugBank.
@@ -30,14 +34,19 @@ This demo shows how to create a dataset with drug information from DrugBank.
 mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.datasets.demos.DrugBankDemo"
 ```
 
+The option `-Dexec.mainClass` specifies the package name and the name of class with the main method to be executed.
+
+
 ### Run WaterInteractions
 This demo shows how to analyze bridging water interactions between a ligand and a protein in the PDB.
 
 ```
-mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.datasets.demos.WaterInteractions" -Dexec.args="-r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o pathToOuputDirectory" -DMMTF_FULL="pathToMmtfDirectory/full"
+mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.datasets.demos.WaterInteractions" -Dexec.args="-r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o pathToOutputDirectory" -DMMTF_FULL="pathToMmtfDirectory/full"
 ```
 
-The option -Dexec.args specifies the command line arguments:
+The option `-Dexec.mainClass` specifies the package name and the name of main class to be executed.
+
+The option `-Dexec.args` specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-r 2.0`: minimum resolution of structure
 
@@ -51,9 +60,11 @@ The option -Dexec.args specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w`: include other water in interactions (not used in the example above)
 
-The option -DMMTF-FULL specifies the location of the PDB archive in the form of a Hadoop Sequence directory named *full*. See [mmtf.rcsb.org](http://mmtf.rcsb.org/download.html) for more details.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-o`: path to output directory
 
-An up to file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). Once this full.tar file has been downloaded, extract the full directory by double clicking the full.tar file (macOS) or by using a tool such as [7-Zip](http://www.7-zip.org/) (Windows).
+The option `-DMMTF-FULL` specifies the location of the PDB archive in the form of a Hadoop Sequence directory named *full*. See [mmtf.rcsb.org](http://mmtf.rcsb.org/download.html) for more details.
+
+An up to date file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). To extract the *full* directory from the *full.tar* archive, double click the file on *macOS* or use a tool such as [7-Zip](http://www.7-zip.org/) on *Windows*.
 
 Alternatively, the following command tools can be used download and extract the data (LINUX, macOS):
 
