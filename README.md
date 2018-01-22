@@ -84,7 +84,7 @@ The option `-Dexec.args` specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-max 4`: maximum number of interactions
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w`: include other water in interactions (not used in this example)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w`: include other waters as interaction partners (not used in this example)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-o`: path to output directory
 
