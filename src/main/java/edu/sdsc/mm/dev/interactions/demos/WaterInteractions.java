@@ -1,4 +1,4 @@
-package edu.sdsc.mm.dev.interactions.demo;
+package edu.sdsc.mm.dev.interactions.demos;
 
 import static org.apache.spark.sql.functions.col;
 

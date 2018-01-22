@@ -1,4 +1,4 @@
-package edu.sdsc.mm.dev.datasets.demo;
+package edu.sdsc.mm.dev.datasets.demos;
 
 import java.io.IOException;
 
