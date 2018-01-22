@@ -18,6 +18,19 @@
 		<mmtf-spark.version>0.0.1-SNAPSHOT</mmtf-spark.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>sonatype-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -36,4 +49,5 @@
 			<version>3.9.1</version>
 		</dependency>
 	</dependencies>
+	
 </project>
