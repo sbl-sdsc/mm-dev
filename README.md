@@ -1,14 +1,14 @@
 ## mm-dev
-This repository is a working area for incubating new methods for the mmtf-spark project.
+This repository is a working area for incubating new methods for the [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark) project.
 
 ## Install Maven
-The install of this repository requires the [Maven](http://maven.apache.org/guides/getting-started/index.html#What_is_Maven) tool. If you do not have this tool installed, follow the directions below.
+The installation requires the [Maven](http://maven.apache.org/guides/getting-started/index.html#What_is_Maven) build tool. If you do not have Maven installed, follow the directions below.
 
 [Download Maven](http://maven.apache.org/download.cgi)
 
 [Install Maven](http://maven.apache.org/install.html)
 
-To check if Maven is install, run the following command:
+To check the Maven installation, run the following command:
 ```
 $ mvn -v
 ```
@@ -27,6 +27,7 @@ $ cd mm-dev
 $ mvn install
 ```
 The *install* goal will compile, test, and package the project’s code and then copy it into the local dependency repository, which Maven maintains on your local machine.
+
 
 ## Download the PDB archive as a Hadoop Sequence File
 The mmtf-spark and mm-dev projects read the PDB archive in the [MMTF file format](https://doi.org/10.1371/journal.pcbi.1005575) from a [Hadoop Sequence File](https://wiki.apache.org/hadoop/SequenceFile). This file format enables high-performance, parallel processing of the entire PDB using [Apache Spark](https://spark.apache.org).
@@ -50,6 +51,7 @@ This will get and unpack the content of the Hadoop Sequence File to a directory 
 
 ## Run a Demo using Maven
 The Maven **exec** plugin lets you run the main method of a Java class in the project, with the project dependencies automatically included in the classpath.
+
 
 ### Run DrugBankDemo
 This demo shows how to create a dataset with drug information from DrugBank.
@@ -82,11 +84,11 @@ The option `-Dexec.args` specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-max 4`: maximum number of interactions
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w`: include other water in interactions (not used in the example above)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w`: include other water in interactions (not used in this example)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-o`: path to output directory
 
-The option `-DMMTF-FULL` specifies the location of the PDB archive as a Hadoop Sequence File directory named *full*.
+The option `-DMMTF_FULL` specifies the location of the PDB archive as a Hadoop Sequence File directory named *full*.
 
 
 
