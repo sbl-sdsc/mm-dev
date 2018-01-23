@@ -67,7 +67,7 @@ The option `-Dexec.mainClass` specifies the package name and the name of the cla
 This demo shows how to analyze bridging water interactions between a ligand and a protein in the PDB.
 
 ```
-mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.datasets.demos.WaterInteractions" -Dexec.args="-r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o pathToOutputDirectory" -DMMTF_FULL="pathToMmtfDirectory/full"
+mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.interactions.demos.WaterInteractions" -Dexec.args="-r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o pathToOutputDirectory" -DMMTF_FULL="pathToMmtfDirectory/full"
 ```
 
 The option `-Dexec.mainClass` specifies the package name and the name of main class to be executed.
