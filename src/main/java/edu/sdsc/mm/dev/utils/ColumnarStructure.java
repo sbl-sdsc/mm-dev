@@ -66,7 +66,7 @@ public class ColumnarStructure implements Serializable {
 		return numChains;
 	}
 
-	public int numModels() {
+	public int getNumModels() {
 		return numModels;
 	}
 
