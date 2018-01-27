@@ -1,27 +1,15 @@
 ## mm-dev
 This repository is a working area for incubating new methods for the [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark) project.
 
-## Install Maven
-The installation requires the [Maven](http://maven.apache.org/guides/getting-started/index.html#What_is_Maven) build tool. If you do not have Maven installed, follow the directions below.
+## Installation
+### Prerequisites
+Install [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark).
 
-[Download Maven](http://maven.apache.org/download.cgi)
-
-[Install Maven](http://maven.apache.org/install.html)
-
-To check the Maven installation, run the following command:
-```
-$ mvn -v
-```
-
-## Install mmtf-spark and mm-dev Git Repositories
-Clone the mmtf-spark and mm-dev repositories and build the project using Maven.
+### Install mm-dev
+Clone the mm-dev repository and build the project using Maven.
 
 ```
-$ git clone https://github.com/sbl-sdsc/mmtf-spark.git
-$ cd mmtf-spark
-$ mvn install
-$ cd ..
-
+$ cd INSTALL_DIRECTORY
 $ git clone https://github.com/sbl-sdsc/mm-dev.git
 $ cd mm-dev
 $ mvn install
@@ -33,9 +21,7 @@ The *install* goal will compile, test, and package the project’s code and then
 The mmtf-spark and mm-dev projects read the PDB archive in the [MMTF file format](https://doi.org/10.1371/journal.pcbi.1005575) from a [Hadoop Sequence File](https://wiki.apache.org/hadoop/SequenceFile). This file format enables high-performance, parallel processing of the entire PDB using [Apache Spark](https://spark.apache.org).
 See [mmtf.rcsb.org](https://mmtf.rcsb.org/download.html) for more details.
 
-An up to date file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). To extract the *full* directory from the *full.tar* archive, double click the file on *macOS* or use a tool such as [7-Zip](http://www.7-zip.org/) on *Windows*.
-
-Alternatively, the following command line tools can be used download and extract the data (LINUX, macOS):
+An up to date file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). Use the following command line tools to download and extract the data:
 
 ```
 $ curl -O https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
