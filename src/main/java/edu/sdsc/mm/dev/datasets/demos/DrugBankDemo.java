@@ -26,7 +26,7 @@ public class DrugBankDemo {
     public static void main(String[] args) throws IOException {
         SparkSession spark = SparkSession.builder().master("local[*]").appName(DrugBankDemo.class.getSimpleName())
                 .getOrCreate();
-        spark.sparkContext().setLogLevel("WARN");
+        spark.sparkContext().setLogLevel("ERROR");
 
         // download open DrugBank dataset
         Dataset<Row> openDrugLinks = DrugBankDataset.getOpenDrugLinks();
