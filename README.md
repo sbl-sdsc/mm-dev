@@ -3,7 +3,7 @@ This repository is an incubating area for new methods for the [mmtf-spark](https
 
 ## Installation
 ### Prerequisites
-Install [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark).
+Install mmtf-spark and download Hadoop Sequence files [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark).
 
 ### Install mm-dev
 Clone the mm-dev repository and build the project using Maven.
@@ -16,24 +16,6 @@ mvn install
 ```
 The *install* goal will compile, test, and package the project’s code and then copy it into the local dependency repository, which Maven maintains on your local machine.
 
-
-## Download the PDB archive as a Hadoop Sequence File
-The mmtf-spark and mm-dev projects read the PDB archive in the [MMTF file format](https://doi.org/10.1371/journal.pcbi.1005575) from a [Hadoop Sequence File](https://wiki.apache.org/hadoop/SequenceFile). This file format enables high-performance, parallel processing of the entire PDB using [Apache Spark](https://spark.apache.org).
-See [mmtf.rcsb.org](https://mmtf.rcsb.org/download.html) for more details.
-
-An up to date file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). Use the following command line tools to download and extract the data:
-
-```
-curl -O https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
-tar -xvf full.tar
-```
-or
-```
-wget https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
-tar -xvf full.tar
-```
-
-This will get and unpack the content of the Hadoop Sequence File to a directory named *full*. 
 
 ## Run a Demo using Maven
 The Maven **exec** plugin lets you run the main method of a Java class in the project, with the project dependencies automatically included in the classpath.
