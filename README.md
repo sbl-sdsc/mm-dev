@@ -1,5 +1,5 @@
 ## mm-dev
-This repository is a working area for incubating new methods for the [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark) project.
+This repository is an incubating area for new methods for the [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark) project.
 
 ## Installation
 ### Prerequisites
@@ -9,10 +9,10 @@ Install [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark).
 Clone the mm-dev repository and build the project using Maven.
 
 ```
-$ cd INSTALL_DIRECTORY
-$ git clone https://github.com/sbl-sdsc/mm-dev.git
-$ cd mm-dev
-$ mvn install
+cd INSTALL_DIRECTORY
+git clone https://github.com/sbl-sdsc/mm-dev.git
+cd mm-dev
+mvn install
 ```
 The *install* goal will compile, test, and package the project’s code and then copy it into the local dependency repository, which Maven maintains on your local machine.
 
@@ -24,13 +24,13 @@ See [mmtf.rcsb.org](https://mmtf.rcsb.org/download.html) for more details.
 An up to date file can be [downloaded](http://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar). Use the following command line tools to download and extract the data:
 
 ```
-$ curl -O https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
-$ tar -xvf full.tar
+curl -O https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
+tar -xvf full.tar
 ```
 or
 ```
-$ wget https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
-$ tar -xvf full.tar
+wget https://mmtf.rcsb.org/v1.0/hadoopfiles/full.tar
+tar -xvf full.tar
 ```
 
 This will get and unpack the content of the Hadoop Sequence File to a directory named *full*. 
