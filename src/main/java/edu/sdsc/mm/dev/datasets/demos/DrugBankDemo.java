@@ -6,7 +6,7 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
-import edu.sdsc.mm.dev.datasets.DrugBankDataset;
+import edu.sdsc.mmtf.spark.datasets.DrugBankDataset;
 
 /**
  * This class demonstrates how to access the open DrugBank dataset. This
@@ -19,6 +19,7 @@ import edu.sdsc.mm.dev.datasets.DrugBankDataset;
  * <a href="https://dx.doi.org/10.1093/nar/gkx1037">doi:10.1093/nar/gkx1037</a>.
  * 
  * @author Peter Rose
+ * @since 0.2.0
  * 
  */
 public class DrugBankDemo {
@@ -26,7 +27,7 @@ public class DrugBankDemo {
     public static void main(String[] args) throws IOException {
         SparkSession spark = SparkSession.builder().master("local[*]").appName(DrugBankDemo.class.getSimpleName())
                 .getOrCreate();
-        spark.sparkContext().setLogLevel("ERROR");
+        spark.sparkContext().setLogLevel("OFF");
 
         // download open DrugBank dataset
         Dataset<Row> openDrugLinks = DrugBankDataset.getOpenDrugLinks();

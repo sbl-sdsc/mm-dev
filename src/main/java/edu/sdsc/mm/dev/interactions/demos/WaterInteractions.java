@@ -55,16 +55,15 @@ public class WaterInteractions {
         boolean includeWaters = cmd.hasOption("include-waters");
 
         // get path to MMTF Hadoop Sequence file
-        String path = System.getProperty("MMTF_FULL");
-        if (path == null) {
-            System.err.println("Property for Hadoop sequence file has not been set");
-            System.exit(-1);
-        }
-
+        String path = MmtfReader.getMmtfFullPath();
+        
         // initialize Spark
         SparkConf conf = new SparkConf().setMaster("local[*]").setAppName(WaterInteractions.class.getSimpleName());
         JavaSparkContext sc = new JavaSparkContext(conf);
+
         
+      
+       
         
         // read PDB structures and filter by resolution and only include proteins
         JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.readSequenceFile(path, sc)
@@ -167,12 +166,12 @@ public class WaterInteractions {
             System.exit(1);
         }
         
-        if (!cmd.hasOption("o")) {
-            System.err.println("ERROR: no output path specified!");
-            HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp(WaterInteractions.class.getSimpleName(), options);
-            System.exit(1);
-        }
+//        if (!cmd.hasOption("output-path")) {
+//            System.err.println("ERROR: no output path specified!");
+//            HelpFormatter formatter = new HelpFormatter();
+//            formatter.printHelp(WaterInteractions.class.getSimpleName(), options);
+//            System.exit(1);
+//        }
 
         return cmd;
     }

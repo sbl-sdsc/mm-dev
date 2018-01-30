@@ -45,11 +45,6 @@
 			<version>${mmtf-spark.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.squareup.okhttp3</groupId>
-			<artifactId>okhttp</artifactId>
-			<version>3.9.1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.11</artifactId>
 			<version>${spark.version}</version>
@@ -73,12 +68,43 @@
 			<version>${spark.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.github.fommil.netlib</groupId>
-			<artifactId>all</artifactId>
-			<version>1.1.2</version>
-			<type>pom</type>
-		</dependency>
 	</dependencies>
-	
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<artifactSet>
+						<excludes>
+							<exclude>junit:junit</exclude>
+							<exclude>log4j:log4j:jar:</exclude>
+							<exclude>org.slf4j:</exclude>
+							<exclude>org.apache.logging.log4j:</exclude>
+							<exclude>commons-lang:</exclude>
+						</excludes>
+					</artifactSet>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

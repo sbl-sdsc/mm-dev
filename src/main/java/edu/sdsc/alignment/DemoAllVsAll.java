@@ -13,7 +13,7 @@ import org.rcsb.mmtf.api.StructureDataInterface;
 
 import edu.sdsc.mmtf.spark.io.MmtfReader;
 import edu.sdsc.mmtf.spark.mappers.StructureToPolymerChains;
-import edu.sdsc.mmtf.spark.rcsbfilters.Pisces;
+import edu.sdsc.mmtf.spark.webfilters.Pisces;
 
 /**
  * This class demonstrates how to run an all vs. all
@@ -26,11 +26,7 @@ public class DemoAllVsAll {
 
 	public static void main(String[] args) throws IOException {
 
-		String path = System.getProperty("MMTF_REDUCED");
-		if (path == null) {
-			System.err.println("Environment variable for Hadoop sequence file has not been set");
-			System.exit(-1);
-		}
+		String path = MmtfReader.getMmtfReducedPath();
 
 		long start = System.nanoTime();
 		
