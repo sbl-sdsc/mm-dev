@@ -60,10 +60,6 @@ public class WaterInteractions {
         // initialize Spark
         SparkConf conf = new SparkConf().setMaster("local[*]").setAppName(WaterInteractions.class.getSimpleName());
         JavaSparkContext sc = new JavaSparkContext(conf);
-
-        
-      
-       
         
         // read PDB structures and filter by resolution and only include proteins
         JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.readSequenceFile(path, sc)
@@ -80,8 +76,7 @@ public class WaterInteractions {
         filter.setQueryGroups(true, "HOH");
         filter.setQueryElements(true, "O"); // only use water oxygen
         filter.setTargetElements(true, "O", "N", "S");
-
-        
+  
         // exclude "uninteresting" ligands
         Set<String> prohibitedGroups = new HashSet<>();
         prohibitedGroups.addAll(ExcludedLigandSets.ALL_GROUPS);
@@ -89,20 +84,17 @@ public class WaterInteractions {
             prohibitedGroups.add("HOH");
         }
         filter.setProhibitedTargetGroups(prohibitedGroups);
-
-        
+     
         // calculate interactions
         Dataset<Row> data = GroupInteractionExtractor.getInteractions(pdb, filter);
 
         // keep only interactions with at least one organic ligand and one protein interaction
         data = filterBridgingWaterInteractions(data, maxInteractions).cache();
- 
         
         // show some results
         data.show(50);
         System.out.println("Hits(all): " + data.count());
-
-        
+     
         // save interactions to a .parquet file
         String waterTag = includeWaters ? "_w" : "";
         String filename = outputPath + "/water_pl" + "_r" + resolution 
@@ -119,7 +111,20 @@ public class WaterInteractions {
         System.out.println("Time: " + TimeUnit.NANOSECONDS.toSeconds(end - start) + " sec.");
     }
 
+    /**
+     * Remove rows where the water interaction does not include at least one organic ligand (LGO) 
+     * and one protein residue (PRO).
+     * 
+     * TODO need to handle cases of maxInteractions > 4
+     * @param data
+     * @param maxInteractions
+     * @return
+     */
     private static Dataset<Row> filterBridgingWaterInteractions(Dataset<Row> data, String maxInteractions) {    
+    	if (maxInteractions.compareTo("4") > 0) {
+    		throw new IllegalArgumentException("maxInteractions > 4 are not supported, yet");
+    	}
+    	
         if (maxInteractions.equals("2")) {
             data = data.filter(col("type1").equalTo("LGO").or(col("type2").equalTo("LGO")));
             data = data.filter(col("type1").equalTo("PRO").or(col("type2").equalTo("PRO")));
@@ -166,6 +171,7 @@ public class WaterInteractions {
             System.exit(1);
         }
         
+        // TODO this check does not work??
 //        if (!cmd.hasOption("output-path")) {
 //            System.err.println("ERROR: no output path specified!");
 //            HelpFormatter formatter = new HelpFormatter();
