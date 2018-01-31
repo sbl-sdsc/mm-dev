@@ -43,9 +43,20 @@ public class StructuralAlignmentMapper implements FlatMapFunction<Tuple2<Integer
 		String xId = data.get(xIndex)._1();
 		String yId = data.get(yIndex)._1();
 		
+
 		// get coordinate arrays
-		Point3d[] x = data.get(xIndex)._2();
-		Point3d[] y = data.get(yIndex)._2();
+	    Point3d[] x = data.get(xIndex)._2();
+	    Point3d[] y = data.get(yIndex)._2();
+		    
+	    // establish unique order base on the Ids
+		if (xId.compareTo(yId) > 0) {
+		    String s = xId;
+		    xId = yId;
+		    yId = s;
+		    Point3d[] p = x;
+		    x = y;
+		    y = p;
+		}
 
 		// create a unique key
 		String key = xId + "-" + yId;
