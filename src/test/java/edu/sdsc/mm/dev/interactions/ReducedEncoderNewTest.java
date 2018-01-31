@@ -25,7 +25,7 @@ public class ReducedEncoderNewTest {
 //	    List<String> pdbIds = Arrays.asList("1STP","4HHB","2ONX","1JLP","5X6H","5L2G","2MK1");
 	    List<String> pdbIds = Arrays.asList("1STP","4HHB","2ONX","2CCV");
 	    JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.downloadMmtfFiles(pdbIds, sc).cache();	    
-	    pdb.foreach(t -> System.out.println(t._1 + "o :" + t._2.getNumBonds()));
+//	    pdb.foreach(t -> System.out.println(t._1 + "o :" + t._2.getNumBonds()));
 	 
 //	    List<String> chainIds = pdb.map(t -> t._1 + "_chainId_" + Arrays.toString(t._2.getChainIds())).collect();
 //	    System.out.println("full: " + chainIds);
