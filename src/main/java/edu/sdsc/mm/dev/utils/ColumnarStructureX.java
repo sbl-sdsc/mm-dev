@@ -39,7 +39,7 @@ public class ColumnarStructureX extends ColumnarStructure {
             // where they are undefined
             DescriptiveStatistics stats = new DescriptiveStatistics();
             for (int i = 0; i < getNumAtoms(); i++) {
-                if (! (types.equals("HOH") || types.equals("DOD"))) {
+                if (! (types[i].equals("HOH") || types[i].equals("DOD"))) {
                     stats.addValue(bFactors[i]);
                 }
             }
