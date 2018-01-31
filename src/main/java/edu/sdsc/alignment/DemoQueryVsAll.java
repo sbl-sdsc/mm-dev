@@ -20,13 +20,13 @@ import edu.sdsc.mmtf.spark.mappers.StructureToPolymerChains;
 import edu.sdsc.mmtf.spark.webfilters.Pisces;
 
 
-public class DemoOneVsAll {
+public class DemoQueryVsAll {
 
     public static void main(String[] args) throws IOException {
 
         String path = MmtfReader.getMmtfReducedPath();
 
-        SparkConf conf = new SparkConf().setMaster("local[*]").setAppName(DemoOneVsAll.class.getSimpleName());
+        SparkConf conf = new SparkConf().setMaster("local[*]").setAppName(DemoQueryVsAll.class.getSimpleName());
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         long start = System.nanoTime();
