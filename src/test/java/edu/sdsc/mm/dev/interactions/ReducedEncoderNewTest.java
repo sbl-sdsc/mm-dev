@@ -27,24 +27,24 @@ public class ReducedEncoderNewTest {
 	    JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.downloadMmtfFiles(pdbIds, sc).cache();	    
 	    pdb.foreach(t -> System.out.println(t._1 + "o :" + t._2.getNumBonds()));
 	 
-	    List<String> chainIds = pdb.map(t -> t._1 + "_chainId_" + Arrays.toString(t._2.getChainIds())).collect();
-	    System.out.println("full: " + chainIds);
+//	    List<String> chainIds = pdb.map(t -> t._1 + "_chainId_" + Arrays.toString(t._2.getChainIds())).collect();
+//	    System.out.println("full: " + chainIds);
 	    
-	    List<String> chainNames = pdb.map(t -> t._1 + "_chainNames_" + Arrays.toString(t._2.getChainNames())).collect();
-	    System.out.println("full: " + chainNames);
-	    List<String> numGroups = pdb.map(t -> t._1 + "_numGroups_" + t._2.getNumGroups()).collect();
-	    System.out.println("full: " + numGroups);
-	    List<String> altlocs = pdb.map(t -> t._1 + "_altLocs_" + Arrays.toString(t._2.getAltLocIds())).collect();
-	    System.out.println("full: " + altlocs);
+//	    List<String> chainNames = pdb.map(t -> t._1 + "_chainNames_" + Arrays.toString(t._2.getChainNames())).collect();
+//	    System.out.println("full: " + chainNames);
+//	    List<String> numGroups = pdb.map(t -> t._1 + "_numGroups_" + t._2.getNumGroups()).collect();
+//	    System.out.println("full: " + numGroups);
+//	    List<String> altlocs = pdb.map(t -> t._1 + "_altLocs_" + Arrays.toString(t._2.getAltLocIds())).collect();
+//	    System.out.println("full: " + altlocs);
 	    
 	    pdb = pdb.mapValues(v -> ReducedEncoder.getReduced(v)).cache();
 
-	    chainIds = pdb.map(t -> t._1 + "_chainId_" + Arrays.toString(t._2.getChainIds())).collect();
-	    System.out.println("reduced: " + chainIds);
-	    chainNames = pdb.map(t -> t._1 + "_chainNames_" + Arrays.toString(t._2.getChainNames())).collect();
-	    System.out.println("reduced: " + chainNames);
-	    altlocs = pdb.map(t -> t._1 + "_altLocs_" + Arrays.toString(t._2.getAltLocIds())).collect();
-	    System.out.println("reduced: " + altlocs);
+//	    chainIds = pdb.map(t -> t._1 + "_chainId_" + Arrays.toString(t._2.getChainIds())).collect();
+//	    System.out.println("reduced: " + chainIds);
+//	    chainNames = pdb.map(t -> t._1 + "_chainNames_" + Arrays.toString(t._2.getChainNames())).collect();
+//	    System.out.println("reduced: " + chainNames);
+//	    altlocs = pdb.map(t -> t._1 + "_altLocs_" + Arrays.toString(t._2.getAltLocIds())).collect();
+//	    System.out.println("reduced: " + altlocs);
 	    
 	    
 	    // 1STP # groups 121 CA + 1 BTN = 122
@@ -53,11 +53,11 @@ public class ReducedEncoderNewTest {
 	    // 2CVV # atoms 99 CA + 4 altloc CA + 1 A2G (sugar) + 1 NAG (orig 15) + 1 GOL + 1 ZN, 1 ACE = 108 
 	    // TODO (4 altlocs missing?)
 	    
-	    numGroups = pdb.map(t -> t._1 + "_numGroups_" + t._2.getNumGroups()).collect();
-	    System.out.println("reduced: " + numGroups);
+//	    numGroups = pdb.map(t -> t._1 + "_numGroups_" + t._2.getNumGroups()).collect();
+//	    System.out.println("reduced: " + numGroups);
 	    
 	    List<String> atoms = pdb.map(t -> t._1 + "_atoms_" + t._2.getNumAtoms()).collect();
-	    System.out.println(atoms);
+//	    System.out.println(atoms);
 	    // 1STP # atoms 121 CA + 16 BTN
 	    // 4HHB # atom 141x2 + 146x2 CA +  43x4 HEM + 2P (from PO4) = 748
 	    // 2ONX # atoms 4 CA
