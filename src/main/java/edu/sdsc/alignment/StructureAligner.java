@@ -141,7 +141,7 @@ public class StructureAligner implements Serializable {
 		// create a list of integers from 0 - n-1
 		List<Integer> range = IntStream.range(0, n).boxed().collect(Collectors.toList());
 
-		JavaRDD<Integer> pRange = sc.parallelize(range, 3*sc.defaultParallelism());
+		JavaRDD<Integer> pRange = sc.parallelize(range, NUM_TASKS*sc.defaultParallelism());
 
 		// flatmap this list of integers into all unique pairs 
 		// (0,1),(0,2),...(0,n-1),  (1,2)(1,3),..,(1,n-1),  (2,3),(2,4),...
