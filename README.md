@@ -3,13 +3,13 @@ This repository is an incubating area for new methods for the [mmtf-spark](https
 
 ## Installation
 ### Prerequisites
-Install mmtf-spark and download Hadoop Sequence files [mmtf-spark](https://github.com/sbl-sdsc/mmtf-spark).
+Install mmtf-spark, its prerequisites, and download MMTF-Hadoop Sequence files [mmtf-spark installation guide](https://github.com/sbl-sdsc/mmtf-spark#installation).
 
 ### Install mm-dev
 Clone the mm-dev repository and build the project using Maven.
 
 ```
-cd INSTALL_DIRECTORY
+cd INSTALL_PATH
 git clone https://github.com/sbl-sdsc/mm-dev.git
 cd mm-dev
 mvn install
@@ -17,30 +17,16 @@ mvn install
 The *install* goal will compile, test, and package the project’s code and then copy it into the local dependency repository, which Maven maintains on your local machine.
 
 
-## Run a Demo using Maven
-The Maven **exec** plugin lets you run the main method of a Java class in the project, with the project dependencies automatically included in the classpath.
-
-
-### Run DrugBankDemo
-This demo shows how to create a dataset with drug information from DrugBank.
+## Run a Demo Application using spark-submit
+This demo shows how calculate bridging water interactions between a ligand and a protein in the PDB.
 
 ```
-mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.datasets.demos.DrugBankDemo"
+spark-submit --master local --class edu.sdsc.mm.dev.interactions.demos.WaterInteractions  /Users/peter/GitRepositories/mm-dev/target/mm-dev-0.0.1-SNAPSHOT.jar -r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o water
 ```
 
-The option `-Dexec.mainClass` specifies the package name and the name of the class with the main method to be executed.
+The option --class specifies the class path and name of the main class (WaterInteractions)
 
-
-### Run WaterInteractions
-This demo shows how to analyze bridging water interactions between a ligand and a protein in the PDB.
-
-```
-mvn exec:java -Dexec.mainClass="edu.sdsc.mm.dev.interactions.demos.WaterInteractions" -Dexec.args="-r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o pathToOutputDirectory" -DMMTF_FULL="pathToMmtfDirectory/full"
-```
-
-The option `-Dexec.mainClass` specifies the package name and the name of main class to be executed.
-
-The option `-Dexec.args` specifies the command line arguments:
+The options after the .jar file are command line arguments for WaterInteractions:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-r 2.0`: minimum resolution of structure
 
@@ -56,11 +42,3 @@ The option `-Dexec.args` specifies the command line arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-o`: path to output directory
 
-The option `-DMMTF_FULL` specifies the location of the PDB archive as a Hadoop Sequence File directory named *full*.
-
-
-
-**Note:** You may need to increase the memory allocation pool for a Java Virtual Machine. Use *-Xmx* option to increase the Java heap size to 4G when running the analysis.
-```
-export MAVEN_OPTS="-Xmx4G"
-```
