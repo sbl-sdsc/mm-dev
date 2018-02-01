@@ -36,6 +36,12 @@ public class DemoAllVsAll {
 		// Read PDB and create a Pisces non-redundant set at 20% sequence identity and a resolution better than 1.6 A.
 		// Then take a 1% random sample.	
 		double fraction = 0.01;
+		
+		// optional command line argument
+		if (args.length == 1) {
+			fraction = Double.parseDouble(args[0]);
+		}
+
 		long seed = 123;
 		
 		JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.readSequenceFile(path, sc)
@@ -43,6 +49,7 @@ public class DemoAllVsAll {
 				.filter(new Pisces(20, 1.6))
 				.sample(false, fraction, seed);
 		
+		System.out.println(pdb.count());
 		// run the structural alignment
 		String algorithmName = FatCatRigid.algorithmName;
 		Dataset<Row> alignments = StructureAligner.getAllVsAllAlignments(pdb, algorithmName).cache();
