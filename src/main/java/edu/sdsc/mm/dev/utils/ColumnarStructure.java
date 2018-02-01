@@ -184,7 +184,8 @@ public class ColumnarStructure implements Serializable {
 					} else {
 						eType = "UNK";
 					}
-				} else if (ccType.equals("HOH")) {
+//				} else if (ccType.equals("HOH")) {
+				} else if (groupNames[start].equals("HOH") || groupNames[start].equals("DOD")) {
 					eType = "WAT";
 				} else if (ccType.contains("SACCHARIDE")) {
 					eType = "SAC"; // non-polymeric saccharide

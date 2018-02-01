@@ -95,4 +95,13 @@ public class ColumnarStructureTest {
 			assertEquals("NON-POLYMER", aa.getChemCompTypes()[901]); // BTN
 			assertEquals("NON-POLYMER", aa.getChemCompTypes()[917]); // HOH
 	}
+	
+	@Test
+	public void testGetEntityTypes() {
+			StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
+	        ColumnarStructure aa = new ColumnarStructure(s, true);
+			assertEquals("PRO", aa.getEntityTypes()[100]);
+			assertEquals("LGO", aa.getEntityTypes()[901]); // BTN
+			assertEquals("WAT", aa.getEntityTypes()[917]); // HOH
+	}
 }
