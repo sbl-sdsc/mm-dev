@@ -166,7 +166,7 @@ public class StructureToAtomInteractions
 	/**
 	 * Returns a list of indices to query atoms in the structure
 	 * 
-	 * @param ColumnarStructure
+	 * @param ColumnarStructureX
 	 * @return
 	 */
 	private List<Integer> getQueryAtomIndices(ColumnarStructureX arrays) {

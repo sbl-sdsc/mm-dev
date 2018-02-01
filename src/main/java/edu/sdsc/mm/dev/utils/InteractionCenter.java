@@ -44,7 +44,6 @@ public class InteractionCenter implements Serializable {
      *            index to the interacting atom
      */
     public InteractionCenter(ColumnarStructureX structure, int atomIndex) {
-        ;
         this.setAtomName(structure.getAtomNames()[atomIndex]);
         this.setElement(structure.getElements()[atomIndex]);
         this.setGroupName(structure.getGroupNames()[atomIndex]);

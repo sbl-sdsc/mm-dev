@@ -1,4 +1,4 @@
-package edu.sdsc.mm.dev.interactions;
+package edu.sdsc.mmtf.spark.incubator;
 
 import static org.junit.Assert.assertTrue;
 

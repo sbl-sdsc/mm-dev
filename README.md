@@ -28,7 +28,7 @@ The option --class specifies the class path and name of the main class (WaterInt
 
 The options after the .jar file are command line arguments for WaterInteractions:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-r 2.0`: minimum resolution of structure
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-r 2.0`: maximum resolution of structure
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-d 3.0`: maximum distance for interactions
 
