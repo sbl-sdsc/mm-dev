@@ -21,7 +21,7 @@ The *install* goal will compile, test, and package the project’s code and then
 This demo shows how calculate bridging water interactions between a ligand and a protein in the PDB.
 
 ```
-spark-submit --master local --class edu.sdsc.mm.dev.interactions.demos.WaterInteractions  /Users/peter/GitRepositories/mm-dev/target/mm-dev-0.0.1-SNAPSHOT.jar -r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o water
+spark-submit --master local --class edu.sdsc.mm.dev.interactions.demos.WaterInteractions  INSTALL_PATH/mm-dev/target/mm-dev-0.0.1-SNAPSHOT.jar -r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o water
 ```
 
 The option --class specifies the class path and name of the main class (WaterInteractions)
