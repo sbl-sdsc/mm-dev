@@ -29,7 +29,7 @@ import org.apache.spark.sql.types.StructType;
  * </ul>
  * 
  * @author Peter Rose
- * @see edu.sdsc.mm.dev.utils.CoordinationGeometry
+ * @see CoordinationGeometry
  *
  */
 public class AtomInteraction {
