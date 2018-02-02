@@ -20,6 +20,8 @@ The *install* goal will compile, test, and package the project’s code and then
 ## Run a Demo Application using spark-submit
 This demo shows how calculate bridging water interactions between a ligand and a protein in the PDB.
 
+Note: On Windows, use "\" instead of "/" in the command below.
+
 ```
 spark-submit --master local --class edu.sdsc.mm.dev.interactions.demos.WaterInteractions  INSTALL_PATH/mm-dev/target/mm-dev-0.0.1-SNAPSHOT.jar -r 2.0 -d 3.0 -b 1.645 -min 4 -max 4 -o water
 ```
