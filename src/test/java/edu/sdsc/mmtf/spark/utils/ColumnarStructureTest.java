@@ -26,7 +26,7 @@ public class ColumnarStructureTest {
 	    sc = new JavaSparkContext(conf);
 
 	    List<String> pdbIds = Arrays.asList("1STP");
-		pdb = MmtfReader.downloadMmtfFiles(pdbIds, sc);
+		pdb = MmtfReader.downloadFullMmtfFiles(pdbIds, sc);
 	}
 
 	@After

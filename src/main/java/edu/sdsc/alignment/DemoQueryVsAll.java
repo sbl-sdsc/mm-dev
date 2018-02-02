@@ -33,7 +33,7 @@ public class DemoQueryVsAll {
 
         // download query structure
         List<String> queryId = Arrays.asList("2W47");
-        JavaPairRDD<String, StructureDataInterface> query = MmtfReader.downloadMmtfFiles(queryId, false, true, sc)
+        JavaPairRDD<String, StructureDataInterface> query = MmtfReader.downloadFullMmtfFiles(queryId, sc)
                 .flatMapToPair(new StructureToPolymerChains());
 
         // use a 1 % sample of the PDB and then filter by the Pisces

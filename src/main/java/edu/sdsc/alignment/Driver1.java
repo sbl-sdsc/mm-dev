@@ -35,14 +35,14 @@ public class Driver1 {
 		// download query structure
 //		List<String> queryId = Arrays.asList("2O9U");
 		List<String> queryId = Arrays.asList("1STP");
-		JavaPairRDD<String, StructureDataInterface> query = MmtfReader.downloadMmtfFiles(queryId, false, true, sc)
+		JavaPairRDD<String, StructureDataInterface> query = MmtfReader.downloadReducedMmtfFiles(queryId, sc)
 				.flatMapToPair(new StructureToPolymerChains(false, true));
 		
 		// Examples similar: 4N6T, 2CH9, 3UL5, 3KVP
 		// Examples dissimilar: 5O5I, 1STP, 
 //		List<String> targetId = Arrays.asList("4N6T", "2CH9", "3UL5", "3KVP", "1STP", "5O5I");
 		List<String> targetId = Arrays.asList("4OKA");
-		JavaPairRDD<String, StructureDataInterface> target = MmtfReader.downloadMmtfFiles(targetId, false, true, sc)
+		JavaPairRDD<String, StructureDataInterface> target = MmtfReader.downloadReducedMmtfFiles(targetId, sc)
 				.flatMapToPair(new StructureToPolymerChains(false, true));
 		
 		// two standard algorithms
