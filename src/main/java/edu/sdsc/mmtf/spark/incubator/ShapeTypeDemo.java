@@ -16,14 +16,11 @@ import org.biojava.nbio.structure.geometry.MomentsOfInertia;
 import org.rcsb.mmtf.api.StructureDataInterface;
 
 import edu.sdsc.mmtf.spark.datasets.PolymerSequenceExtractor;
-import edu.sdsc.mmtf.spark.filters.ContainsLProteinChain;
-import edu.sdsc.mmtf.spark.filters.demos.FilterByRFree;
 import edu.sdsc.mmtf.spark.io.MmtfReader;
 import edu.sdsc.mmtf.spark.mappers.StructureToBioJava;
 import edu.sdsc.mmtf.spark.mappers.StructureToPolymerChains;
 import edu.sdsc.mmtf.spark.ml.JavaRDDToDataset;
 import edu.sdsc.mmtf.spark.ml.ProteinSequenceEncoder;
-import edu.sdsc.mmtf.spark.webfilters.BlastClusters;
 import edu.sdsc.mmtf.spark.webfilters.Pisces;
 import scala.Tuple2;
 

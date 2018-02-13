@@ -27,6 +27,7 @@ import edu.sdsc.mmtf.spark.io.MmtfReader;
 import edu.sdsc.mmtf.spark.mappers.StructureToPolymerChains;
 import edu.sdsc.mmtf.spark.webfilters.Pisces;
 
+
 /**
  * @author peter
  *
