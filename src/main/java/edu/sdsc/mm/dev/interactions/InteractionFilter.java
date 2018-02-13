@@ -237,7 +237,7 @@ public class InteractionFilter implements Serializable {
      * }</pre>
      * 
      * @param include
-     *            if true, uses the specified groups in the target, if false,
+     *            if true, uses the specified groups in the query, if false,
      *            ignores the specified groups and uses all other groups
      * @param groups
      *            to be included or excluded in query
