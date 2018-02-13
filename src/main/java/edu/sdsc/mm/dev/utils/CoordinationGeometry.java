@@ -194,7 +194,7 @@ public class CoordinationGeometry implements Serializable {
         }
 
         double sum = 0.0;
-        // 4 angles between "axial" position 1 and "equatorial" plane
+        // 4 angles between positions in the "equatorial" plane
         sum += Math.pow(dotProducts[0][1], 2);
         sum += Math.pow(dotProducts[1][2], 2);
         sum += Math.pow(dotProducts[2][3], 2);
