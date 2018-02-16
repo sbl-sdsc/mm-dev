@@ -33,13 +33,15 @@ public class Metalnteractions {
         int maxInteractions = 6;
         double distanceCutoff = 3.0;
 
-        // Chemical component codes of metals in different oxidation states
+        // chemical component codes of metals in different oxidation states
         String[] metals = {"V","CR","MN","MN3","FE","FE2","CO","3CO","NI","3NI",
                 "CU","CU1","CU3","ZN","MO","4MO","6MO"};
 
+        // read PDB and create a non-redundant PISCES subset
         JavaPairRDD<String, StructureDataInterface> pdb = MmtfReader.readSequenceFile(path, sc)
                 .filter(new Pisces(sequenceIdentityCutoff, resolution));
 
+        // Setup criteria for metal interactions
         InteractionFilter filter = new InteractionFilter();
         filter.setDistanceCutoff(distanceCutoff);
         filter.setMinInteractions(minInteractions);
@@ -48,11 +50,11 @@ public class Metalnteractions {
         // exclude non-polar interactions
         filter.setTargetElements(false, "H", "C", "P");
 
-        // List interactions per metal ion
+        // tabulate interactions in a dataframe
         Dataset<Row> interactions = GroupInteractionExtractor.getInteractions(pdb, filter).cache();
         System.out.println("Metal interactions: " + interactions.count());
 
-        // Interacting atoms and orientational order parameters
+        // select interacting atoms and orientational order parameters (q4 - q6)
         interactions = interactions.select("pdbId",
                 "q4","q5","q6",
                 "element0","groupNum0","chain0",
@@ -64,7 +66,7 @@ public class Metalnteractions {
                 "element6","groupNum6","chain6","distance6").cache();
         
         // show some example interactions
-        interactions.dropDuplicates("pdbId").show();
+        interactions.dropDuplicates("pdbId").show(10);
         
         System.out.println("Unique interactions by metal:");
         interactions.groupBy("element0").count().sort("count").show();
