@@ -36,72 +36,72 @@ public class ColumnarStructureTest {
 
 	@Test
 	public void testGetxCoords() {
-		StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-        ColumnarStructure aa = new ColumnarStructure(s, true);
-		assertEquals(26.260, aa.getxCoords()[20], 0.001);
+		StructureDataInterface s = pdb.values().first();
+        ColumnarStructure cs = new ColumnarStructure(s, true);
+		assertEquals(26.260, cs.getxCoords()[20], 0.001);
 	}
 	
 	@Test
 	public void testGetElements() {
-		StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-        ColumnarStructure aa = new ColumnarStructure(s, true);
-		assertEquals("C", aa.getElements()[20]);
+		StructureDataInterface s = pdb.values().first();
+        ColumnarStructure cs = new ColumnarStructure(s, true);
+		assertEquals("C", cs.getElements()[20]);
 	}
 	
 	@Test
 	public void testGetAtomNames() {
-		StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-        ColumnarStructure aa = new ColumnarStructure(s, true);
-		assertEquals("CG2", aa.getAtomNames()[900]);
+		StructureDataInterface s = pdb.values().first();
+        ColumnarStructure cs = new ColumnarStructure(s, true);
+		assertEquals("CG2", cs.getAtomNames()[900]);
 	}
 	
 	@Test
 	public void testGetGroupNames() {
-		StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-        ColumnarStructure aa = new ColumnarStructure(s, true);
-		assertEquals("VAL", aa.getGroupNames()[900]);
+		StructureDataInterface s = pdb.values().first();
+        ColumnarStructure cs = new ColumnarStructure(s, true);
+		assertEquals("VAL", cs.getGroupNames()[900]);
 	}
 	
 	@Test
 	public void testIsPolymer() {
-		StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-        ColumnarStructure aa = new ColumnarStructure(s, true);
-		assertEquals(true, aa.isPolymer()[100]); // chain A
-		assertEquals(false, aa.isPolymer()[901]); // BTN
-		assertEquals(false, aa.isPolymer()[917]); // HOH
+		StructureDataInterface s = pdb.values().first();
+        ColumnarStructure cs = new ColumnarStructure(s, true);
+		assertEquals(true, cs.isPolymer()[100]); // chain A
+		assertEquals(false, cs.isPolymer()[901]); // BTN
+		assertEquals(false, cs.isPolymer()[917]); // HOH
 	}
 
 	@Test
 	public void testGetGroupNumbers() {
-			StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-	        ColumnarStructure aa = new ColumnarStructure(s, true);
-			assertEquals("130", aa.getGroupNumbers()[877]);
+			StructureDataInterface s = pdb.values().first();
+	        ColumnarStructure cs = new ColumnarStructure(s, true);
+			assertEquals("130", cs.getGroupNumbers()[877]);
 	}
 	
 	@Test
 	public void testGetChainIds() {
-			StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-	        ColumnarStructure aa = new ColumnarStructure(s, true);
-			assertEquals("A", aa.getChainIds()[100]);
-			assertEquals("B", aa.getChainIds()[901]); // BTN
-			assertEquals("C", aa.getChainIds()[917]); // HOH
+			StructureDataInterface s = pdb.values().first();
+	        ColumnarStructure cs = new ColumnarStructure(s, true);
+			assertEquals("A", cs.getChainIds()[100]);
+			assertEquals("B", cs.getChainIds()[901]); // BTN
+			assertEquals("C", cs.getChainIds()[917]); // HOH
 	}
 	
 	@Test
 	public void testGetChemCompTypes() {
-			StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-	        ColumnarStructure aa = new ColumnarStructure(s, true);
-			assertEquals("PEPTIDE LINKING", aa.getChemCompTypes()[100]);
-			assertEquals("NON-POLYMER", aa.getChemCompTypes()[901]); // BTN
-			assertEquals("NON-POLYMER", aa.getChemCompTypes()[917]); // HOH
+			StructureDataInterface s = pdb.values().first();
+	        ColumnarStructure cs = new ColumnarStructure(s, true);
+			assertEquals("PEPTIDE LINKING", cs.getChemCompTypes()[100]);
+			assertEquals("NON-POLYMER", cs.getChemCompTypes()[901]); // BTN
+			assertEquals("NON-POLYMER", cs.getChemCompTypes()[917]); // HOH
 	}
 	
 	@Test
 	public void testGetEntityTypes() {
-			StructureDataInterface s = pdb.filter(t -> t._1().equals("1STP")).values().collect().get(0);
-	        ColumnarStructure aa = new ColumnarStructure(s, true);
-			assertEquals("PRO", aa.getEntityTypes()[100]);
-			assertEquals("LGO", aa.getEntityTypes()[901]); // BTN
-			assertEquals("WAT", aa.getEntityTypes()[917]); // HOH
+			StructureDataInterface s = pdb.values().first();
+	        ColumnarStructure cs = new ColumnarStructure(s, true);
+			assertEquals("PRO", cs.getEntityTypes()[100]);
+			assertEquals("LGO", cs.getEntityTypes()[901]); // BTN
+			assertEquals("WAT", cs.getEntityTypes()[917]); // HOH
 	}
 }
