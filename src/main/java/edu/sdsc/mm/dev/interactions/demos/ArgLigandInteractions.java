@@ -24,12 +24,12 @@ import org.apache.spark.sql.RelationalGroupedDataset;
 import org.apache.spark.sql.Row;
 import org.rcsb.mmtf.api.StructureDataInterface;
 
-import edu.sdsc.mm.dev.interactions.ExcludedLigandSets;
-import edu.sdsc.mm.dev.interactions.GroupInteractionExtractor;
-import edu.sdsc.mm.dev.interactions.InteractionFilter;
 import edu.sdsc.mmtf.spark.filters.ContainsLProteinChain;
 import edu.sdsc.mmtf.spark.filters.PolymerComposition;
 import edu.sdsc.mmtf.spark.filters.Resolution;
+import edu.sdsc.mmtf.spark.interactions.ExcludedLigandSets;
+import edu.sdsc.mmtf.spark.interactions.GroupInteractionExtractor;
+import edu.sdsc.mmtf.spark.interactions.InteractionFilter;
 import edu.sdsc.mmtf.spark.io.MmtfReader;
 
 /**
