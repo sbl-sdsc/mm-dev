@@ -26,7 +26,7 @@ public class ImportMolFile {
         
         List<String> ligandIds = Arrays.asList("BTN");
         JavaPairRDD<String, StructureDataInterface> structures = Molmporter.downloadChemicalComponents(ligandIds, sc);
-        structures.foreach(t -> TraverseStructureHierarchy.demo(t._2));
+        structures.foreach(t -> TraverseStructureHierarchy.printStructureData(t._2));
         
         sc.close();
     }

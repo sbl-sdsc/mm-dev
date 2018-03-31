@@ -8,7 +8,6 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.rcsb.mmtf.api.StructureDataInterface;
 
 import edu.sdsc.mmtf.spark.io.MmtfImporter;
-import edu.sdsc.mmtf.spark.io.MmtfReader;
 import edu.sdsc.mmtf.spark.io.MmtfWriter;
 import edu.sdsc.mmtf.spark.io.demos.TraverseStructureHierarchy;
 
@@ -53,7 +52,7 @@ public class PdbToMmtfFull {
         // read PDB files recursively starting the specified directory
         JavaPairRDD<String, StructureDataInterface> structures = MmtfImporter.importPdbFiles(pdbPath, sc);
 
-        structures.foreach(t -> TraverseStructureHierarchy.demo(t._2));
+        structures.foreach(t -> TraverseStructureHierarchy.printStructureData(t._2));
         // save as an MMTF-Hadoop Sequence File
         MmtfWriter.writeSequenceFile(mmtfPath, sc, structures);
 

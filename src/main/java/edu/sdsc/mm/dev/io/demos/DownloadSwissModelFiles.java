@@ -10,8 +10,6 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.rcsb.mmtf.api.StructureDataInterface;
 
 import edu.sdsc.mmtf.spark.io.MmtfImporter;
-import edu.sdsc.mmtf.spark.io.MmtfReader;
-import edu.sdsc.mmtf.spark.io.MmtfWriter;
 import edu.sdsc.mmtf.spark.io.demos.TraverseStructureHierarchy;
 
 /**
@@ -48,7 +46,7 @@ public class DownloadSwissModelFiles {
         // TODO: Empty structure record for Q8WXK3
         JavaPairRDD<String, StructureDataInterface> structures = MmtfImporter.downloadSwissModelsByUniProtIds(uniProtIds, sc);
 
-        structures.foreach(t -> TraverseStructureHierarchy.demo(t._2));
+        structures.foreach(t -> TraverseStructureHierarchy.printStructureData(t._2));
         
         // save as an MMTF-Hadoop Sequence File
  //       MmtfWriter.writeSequenceFile(mmtfPath, sc, structures);
